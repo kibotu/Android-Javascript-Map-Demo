@@ -7,7 +7,7 @@
 https://console.cloud.google.com/google/maps-apis/metrics?project=profis-partner
 
 2) put key from https://console.cloud.google.com/apis/credentials?project=profis-partner&supportedpurview=project
-to [app/src/main/assets/maps.html](app/src/main/assets/maps.html)
+to [app/src/main/assets/maps.html](app/src/main/assets/maps.html#6)
 
 ### How to build
 
