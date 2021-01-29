@@ -13,4 +13,4 @@ to [app/src/main/assets/maps.html](app/src/main/assets/maps.html#6)
 
     ./gradlew clean build
 
-[![Screenshot](device-2021-01-29-123301.webm)](device-2021-01-29-123301.webm)
+[![Screenshot](device-2021-01-29-123301.gif)](device-2021-01-29-123301.gif)
