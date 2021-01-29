@@ -1,0 +1,13 @@
+# Huawei Javascript Map Demo  [![Kotlin](https://img.shields.io/badge/kotlin-1.4.21-green.svg)](https://kotlinlang.org/) [![Gradle Version](https://img.shields.io/badge/gradle-6.8.1-green.svg)](https://docs.gradle.org/current/release-notes)
+
+### Embedded Google Maps API Key
+
+https://console.cloud.google.com/apis/credentials?project=profis-partner&supportedpurview=project
+
+Also it's required to activate Maps Javascript API. Note: this might cause costs based on quotas.
+
+https://console.cloud.google.com/google/maps-apis/metrics?project=profis-partner
+
+### How to build
+
+    ./gradlew clean build

@@ -1,0 +1,166 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "de.check24.huawei.maps"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // region signing configs
+
+    signingConfigs {
+        try {
+            debug {
+                storeFile file(DEBUG_KEYSYORE_PATH)
+                storePassword DEBUG_STORE_PASSWORD
+                keyAlias DEBUG_KEYSTORE_ALLIAS
+                keyPassword DEBUG_KEY_PASSWORD
+            }
+        }
+        catch (final ignored) {
+            throw new java.security.spec.InvalidKeySpecException('You should define DEBUG_KEYSTORE_ALLIAS, DEBUG_STORE_PASSWORD, DEBUG_KEY_PASSWORD in gradle.properties.')
+        }
+        try {
+            release {
+                storeFile file(RELEASE_KEYSYORE_PATH)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEYSTORE_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+            }
+        } catch (final ignored) {
+            throw new java.security.spec.InvalidKeySpecException('You should define RELEASE_KEYSTORE_ALIAS, RELEASE_STORE_PASSWORD, RELEASE_KEY_PASSWORD in gradle.properties.')
+        }
+    }
+
+    // endregion
+
+    // region build types
+
+    buildTypes {
+
+        debug {
+            pseudoLocalesEnabled true
+            debuggable true
+            minifyEnabled false
+            crunchPngs false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ext.alwaysUpdateBuildId = false
+            testCoverageEnabled true
+        }
+
+        release {
+            pseudoLocalesEnabled false
+            debuggable false
+            minifyEnabled true
+            crunchPngs true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // endregion
+
+    // region bundle config
+
+    bundle {
+        density {
+            enableSplit true
+        }
+        abi {
+            enableSplit true
+        }
+        language {
+            enableSplit false
+        }
+    }
+
+    // endregion
+
+    // region compile options
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // endregion
+
+    // region compile options
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    // endregion
+
+    // region dex options
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        maxProcessCount 8
+    }
+
+    // endregion
+
+    // region adb options
+
+    adbOptions {
+        timeOutInMs 10 * 60 * 1000 // 10 minutes
+    }
+
+    // endregion
+
+    // region test options
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+        animationsDisabled true
+        unitTests.all {
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen { false }
+                showStandardStreams = true
+            }
+        }
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+    }
+
+    // endregion
+}
+
+dependencies {
+
+    implementation 'com.github.kibotu:RecyclerViewPresenter:5.0.1'
+    implementation "com.github.florent37:applicationprovider:1.0.5"
+    implementation 'com.github.kibotu:AndroidResourceExtensions:1.4.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    implementation "com.github.bumptech.glide:glide:4.11.0"
+    kapt "com.github.bumptech.glide:compiler:4.11.0"
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
