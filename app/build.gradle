@@ -51,6 +51,7 @@ android {
     buildTypes {
 
         debug {
+            signingConfig signingConfigs.debug
             pseudoLocalesEnabled true
             debuggable true
             minifyEnabled false
@@ -62,6 +63,7 @@ android {
         }
 
         release {
+            signingConfig signingConfigs.release
             pseudoLocalesEnabled false
             debuggable false
             minifyEnabled true
