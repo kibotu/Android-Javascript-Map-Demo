@@ -4,9 +4,9 @@
 
 1) Also it's required to activate Maps Javascript API. Note: this might cause costs based on quotas.
 
-https://console.cloud.google.com/google/maps-apis/metrics?project=profis-partner
+https://console.cloud.google.com/google/maps-apis/metrics?project=my-project
 
-2) put key from https://console.cloud.google.com/apis/credentials?project=profis-partner&supportedpurview=project
+2) put key from https://console.cloud.google.com/apis/credentials?project=my-project&supportedpurview=project
 to [app/src/main/assets/maps.html](app/src/main/assets/maps.html#6)
 
 ### How to build
