@@ -2,11 +2,12 @@
 
 ### Embedded Google Maps API Key
 
-https://console.cloud.google.com/apis/credentials?project=profis-partner&supportedpurview=project
-
-Also it's required to activate Maps Javascript API. Note: this might cause costs based on quotas.
+1) Also it's required to activate Maps Javascript API. Note: this might cause costs based on quotas.
 
 https://console.cloud.google.com/google/maps-apis/metrics?project=profis-partner
+
+2) put key from https://console.cloud.google.com/apis/credentials?project=profis-partner&supportedpurview=project
+to [app/src/main/assets/maps.html](app/src/main/assets/maps.html)
 
 ### How to build
 
