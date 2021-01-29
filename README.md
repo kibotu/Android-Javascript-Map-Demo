@@ -12,3 +12,5 @@ to [app/src/main/assets/maps.html](app/src/main/assets/maps.html#6)
 ### How to build
 
     ./gradlew clean build
+
+[![Screenshot](screenshot.png)](screenshot.png)
